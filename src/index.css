@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --leva-sizes-rootWidth: 340px;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Empêche les scrollbars globales */
+body {
+  margin: 0;
+  background-color: #d8eefa;
+  background-image: linear-gradient(180deg, #d8eefa 0%, #b9e4f8 100%);
+  font-family: "Inter", sans-serif;
+  overflow: hidden; /* Empêche le défilement global */
+}
+
+button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation onde sinusoïdale (recording) */
+.wave-animation {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.wave {
+  display: block;
+  width: 6px;
+  height: 20px;
+  background-color: #10b981; /* Couleur verte similaire */
+  border-radius: 50px;
+  animation: wave-animation 1s infinite ease-in-out;
+}
+
+.wave:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.wave:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes wave-animation {
+  0%,
+  100% {
+    transform: scaleY(0.5);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+/* Zone de discussion défilement */
+.overflow-y-auto {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #b9e4f8 #f0f0f0;
+}
+
+.overflow-y-auto::-webkit-scrollbar {
+  width: 8px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background-color: #b9e4f8;
+  border-radius: 10px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+/* Champ d'entrée des messages à droite */
+.fixed.bottom-4.right-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+input {
+  pointer-events: auto;
+  font-size: 0.9rem; /* Taille de police réduite */
+  padding: 0.75rem; /* Ajustement du padding */
+}
+
+input::placeholder {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Zoom Buttons - Déplacé à gauche */
+.fixed.bottom-8.left-8 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Ajustement des boutons zoom */
+button.p-4 {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Assurez-vous que la conversation prend la priorité */
+.conversation-container {
+  pointer-events: auto;
+  z-index: 10;
+}
+
+/* Désactiver les interactions pour la scène */
+.scene-container {
+  pointer-events: none;
+}
